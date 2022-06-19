@@ -33,11 +33,11 @@ public final class WorldTimeTask implements Runnable {
             if(Boolean.FALSE.equals(world.getGameRuleValue(GameRule.DO_DAYLIGHT_CYCLE))) continue;
             String worldName = world.getName();
             if (world.getTime() < NOON && dayOffsets.containsKey(worldName)) {
-                WorldUtils.setFullTimeWithoutTimeSkipEvent(world,world.getFullTime() - 1);
+                WorldUtils.setFullTimeWithoutTimeSkipEvent(world,world.getFullTime() - 1, false);
                 if (dayOffsets.get(worldName) > 1) {
                     long skipAmount = Math.min((long) Math.floor(dayOffsets.get(worldName)),NOON);
                     //System.out.println("Day   skip time: " + skipAmount - 1);
-                    WorldUtils.setFullTimeWithoutTimeSkipEvent(world,world.getFullTime() + skipAmount);
+                    WorldUtils.setFullTimeWithoutTimeSkipEvent(world,world.getFullTime() + skipAmount, true);
                     dayOffsets.put(worldName, dayOffsets.get(worldName) - skipAmount);
                     if (world.getTime() > NOON) {
                         dayOffsets.put(worldName, 0.0);
@@ -45,11 +45,11 @@ public final class WorldTimeTask implements Runnable {
                 }
                 dayOffsets.put(worldName, daySpeed.get(worldName) + dayOffsets.get(worldName));
             } else if (nightOffsets.containsKey(worldName)) {
-                WorldUtils.setFullTimeWithoutTimeSkipEvent(world,world.getFullTime() - 1);
+                WorldUtils.setFullTimeWithoutTimeSkipEvent(world,world.getFullTime() - 1, false);
                 if (nightOffsets.get(worldName) > 1) {
                     long skipAmount = Math.min((long) Math.floor(nightOffsets.get(worldName)),NOON);
                     //System.out.println("Night skip time: " + skipAmount - 1);
-                    WorldUtils.setFullTimeWithoutTimeSkipEvent(world,world.getFullTime() + skipAmount);
+                    WorldUtils.setFullTimeWithoutTimeSkipEvent(world,world.getFullTime() + skipAmount, true);
                     nightOffsets.put(worldName, nightOffsets.get(worldName) - skipAmount);
                     if (world.getTime() < NOON) {
                         nightOffsets.put(worldName, 0.0);
