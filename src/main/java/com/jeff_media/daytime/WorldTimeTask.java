@@ -2,6 +2,7 @@ package com.jeff_media.daytime;
 
 import de.jeff_media.jefflib.WorldUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.GameRule;
 import org.bukkit.World;
 
 import java.util.Map;
@@ -29,22 +30,13 @@ public final class WorldTimeTask implements Runnable {
     @Override
     public void run() {
         for (World world : Bukkit.getWorlds()) {
+            if(Boolean.FALSE.equals(world.getGameRuleValue(GameRule.DO_DAYLIGHT_CYCLE))) continue;
             String worldName = world.getName();
-            if (world.getTime() > NOON && nightOffsets.containsKey(worldName)) {
-                WorldUtils.setFullTimeWithoutTimeSkipEvent(world,world.getFullTime() - 1);
-                if (nightOffsets.get(worldName) > 1) {
-                    long skipAmount = Math.max((long) Math.floor(nightOffsets.get(worldName)),NOON);
-                    WorldUtils.setFullTimeWithoutTimeSkipEvent(world,world.getFullTime() + skipAmount);
-                    nightOffsets.put(worldName, nightOffsets.get(worldName) - skipAmount);
-                    if (world.getTime() < NOON) {
-                        nightOffsets.put(worldName, 0.0);
-                    }
-                }
-                nightOffsets.put(worldName, nightSpeed.get(worldName) + nightOffsets.get(worldName));
-            } else if (dayOffsets.containsKey(worldName)) {
+            if (world.getTime() < NOON && dayOffsets.containsKey(worldName)) {
                 WorldUtils.setFullTimeWithoutTimeSkipEvent(world,world.getFullTime() - 1);
                 if (dayOffsets.get(worldName) > 1) {
-                    long skipAmount = Math.max((long) Math.floor(dayOffsets.get(worldName)),NOON);
+                    long skipAmount = Math.min((long) Math.floor(dayOffsets.get(worldName)),NOON);
+                    //System.out.println("Day   skip time: " + skipAmount - 1);
                     WorldUtils.setFullTimeWithoutTimeSkipEvent(world,world.getFullTime() + skipAmount);
                     dayOffsets.put(worldName, dayOffsets.get(worldName) - skipAmount);
                     if (world.getTime() > NOON) {
@@ -52,6 +44,18 @@ public final class WorldTimeTask implements Runnable {
                     }
                 }
                 dayOffsets.put(worldName, daySpeed.get(worldName) + dayOffsets.get(worldName));
+            } else if (nightOffsets.containsKey(worldName)) {
+                WorldUtils.setFullTimeWithoutTimeSkipEvent(world,world.getFullTime() - 1);
+                if (nightOffsets.get(worldName) > 1) {
+                    long skipAmount = Math.min((long) Math.floor(nightOffsets.get(worldName)),NOON);
+                    //System.out.println("Night skip time: " + skipAmount - 1);
+                    WorldUtils.setFullTimeWithoutTimeSkipEvent(world,world.getFullTime() + skipAmount);
+                    nightOffsets.put(worldName, nightOffsets.get(worldName) - skipAmount);
+                    if (world.getTime() < NOON) {
+                        nightOffsets.put(worldName, 0.0);
+                    }
+                }
+                nightOffsets.put(worldName, nightSpeed.get(worldName) + nightOffsets.get(worldName));
             }
         }
     }

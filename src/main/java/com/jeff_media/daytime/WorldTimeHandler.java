@@ -7,11 +7,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-@UtilityClass
 public final class WorldTimeHandler {
 
-    public static final long NOON = 12_000L;
     private static final Daytime main = Daytime.getInstance();
+    public static final long NOON = 12_000L;
     private final Map<String, Double> dayOffsets = new HashMap<>();
     private final Map<String, Double> nightOffsets = new HashMap<>();
     private final Map<String, Double> daySpeed = new HashMap<>();
@@ -24,6 +23,7 @@ public final class WorldTimeHandler {
             for (String worldName : Objects.requireNonNull(main.getConfig().getConfigurationSection("worlds")).getKeys(false)) {
                 long dayTicks = (long) (main.getConfig().getDouble("worlds." + worldName + ".daytime", 10) * 1200);
                 long nightTicks = (long) (main.getConfig().getDouble("worlds." + worldName + ".nighttime", 10) * 1200);
+                main.getLogger().info("Adjusted tick times for world " + worldName + ": " + dayTicks + " per day, " + nightTicks + " per night");
                 daySpeed.put(worldName, NOON / (double) dayTicks);
                 dayOffsets.put(worldName, 0.0);
                 nightSpeed.put(worldName, NOON / (double) nightTicks);

@@ -10,6 +10,7 @@ public final class Daytime extends JavaPlugin {
 
     @SuppressWarnings("CanBeFinal")
     @Getter private static Daytime instance;
+    private WorldTimeHandler worldTimeHandler;
 
     {
         instance = this;
@@ -24,11 +25,13 @@ public final class Daytime extends JavaPlugin {
     }
 
     public void reload() {
-        WorldTimeHandler.stop();
+        if(worldTimeHandler != null) {
+            worldTimeHandler.stop();
+        }
         saveDefaultConfig();
         reloadConfig();
-
-        WorldTimeHandler.start();
+        worldTimeHandler = new WorldTimeHandler();
+        worldTimeHandler.start();
     }
 
 }
