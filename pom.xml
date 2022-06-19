@@ -26,7 +26,7 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.1.2</version>
                 <configuration>
-                    <finalName>Daytime</finalName>
+                    <finalName>Daytime-${project.version}</finalName>
                     <!--<outputDirectory>C:\mctest\plugins</outputDirectory>-->
                 </configuration>
             </plugin>
@@ -160,7 +160,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.18.2-R0.1-SNAPSHOT</version>
+            <version>1.19-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

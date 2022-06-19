@@ -22,12 +22,14 @@
 #####        Configuration        #####
 #######################################
 
-# Changes the day/night length per world. Values are set in minutes. Vanilla default is 10 minutes.
+# Changes the day/night length per world. Values are set in minutes.
+# Vanilla default is 10 minutes per day and 10 minutes per night.
+# If a world is not set, its time will not be changed.
 # You can also use fractional values, e.g. 0.5 = 30 seconds
 worlds:
-  example_world: # Sets the day and night length in "example_world" to 5 minutes each
-    daytime: 5
-    nighttime: 5
-  default: # Sets the day and night length for all worlds that aren't already defined to 10 minutes each (default)
+  world: # Sets the day and night length in "world" to 10 minutes each (default)
     daytime: 10
     nighttime: 10
+  example_world: # Sets the day length in "example_world" to 15 minutes, and the night length to 5 minutes
+    daytime: 15
+    nighttime: 5
