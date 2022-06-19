@@ -1,0 +1,33 @@
+#######################################
+#####                             #####
+#####           Daytime           #####
+#####                             #####
+#######################################
+
+# written by mfnalex / JEFF Media GbR
+
+#######################################
+#####         Permissions         #####
+#######################################
+
+# daytime.admin    Allows to use the /daytime command
+
+#######################################
+#####           Commands          #####
+#######################################
+
+# /daytime         Reloads the configuration file
+
+#######################################
+#####        Configuration        #####
+#######################################
+
+# Changes the day/night length per world. Values are set in minutes. Vanilla default is 10 minutes.
+# You can also use fractional values, e.g. 0.5 = 30 seconds
+worlds:
+  example_world: # Sets the day and night length in "example_world" to 5 minutes each
+    daytime: 5
+    nighttime: 5
+  default: # Sets the day and night length for all worlds that aren't already defined to 10 minutes each (default)
+    daytime: 10
+    nighttime: 10

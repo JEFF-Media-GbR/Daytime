@@ -1,0 +1,148 @@
+<config>
+
+    <property name="default-package" value="com.jeff_media.daytime"/>
+    <input>
+        <jar in="${project.artifactId}.jar" out="${project.artifactId}.jar"/>
+    </input>
+
+    <classpath>
+        <jar name="C:\Users\mfnal\.m2\repository\org\spigotmc\spigot\1.18.1-R0.1-SNAPSHOT\spigot-1.18.1-R0.1-SNAPSHOT.jar" />
+    </classpath>
+
+    <keep-names>
+        <method template="@java.lang.Override *(**)"/>
+        <method template="public static getHandlerList(**)"/>
+        <class template="class * extends org.bukkit.plugin.java.JavaPlugin"/>
+    </keep-names>
+
+    <ignore-classes>
+        <class template="class **.acf.**"/>
+        <class template="class **NMS**"/>
+        <class template="class **.nms.**"/>
+        <class template="class **.jefflib.internal.blackhole.WorldGuardHandler"/>
+        <!--<class template="class **.Stepsister"/>-->
+    </ignore-classes>
+
+    <property name="log-file" value="log.xml"/>
+
+    <!-- String encryption -->
+    <property name="remove-toString" value="enable"/>
+    <property name="string-encryption" value="enable"/>
+    <property name="string-encryption-type" value="strong"/>
+    <property name="string-encryption-version" value="v4"/>
+    <property name="string-encryption-ignored-strings" value="../allatori/spigotmc-patterns.txt"/>
+
+    <!-- Control flow obfuscation -->
+    <property name="control-flow-obfuscation" value="enable"/>
+    <property name="extensive-flow-obfuscation" value="maximum"/>
+
+    <!-- Renaming -->
+    <property name="packages-naming" value="abc"/>
+    <property name="force-default-package" value="enable"/>
+    <property name="classes-naming" value="windows" />
+    <property name="methods-naming" value="keywords" />
+    <property name="fields-naming" value="keywords" />
+    <property name="local-variables-naming" value="single-name" />
+    <property name="update-resource-names" value="disable"/>
+    <property name="update-resource-contents" value="disable"/>
+
+    <!-- Others -->
+    <property name="member-reorder" value="random"/>
+    <property name="generics" value="keep"/>
+    <property name="line-numbers" value="keep"/>
+    <property name="finalize" value="enable"/>
+    <property name="inner-classes" value="keep"/>
+    <property name="output-jar-compression-level" value="9"/>
+
+    <!-- SpigotMC rules -->
+    <property name="synthetize-methods" value="disable"/>
+    <property name="synthetize-fields" value="disable"/>
+
+</config>
+
+
+        <!--<config>-->
+        <!--    <input>-->
+        <!--        <jar in="${project.artifactId}.jar" out="${project.artifactId}.jar"/>-->
+        <!--    </input>-->
+
+        <!--    <classpath>-->
+        <!--        <jar name="C:\Users\mfnal\.m2\repository\org\spigotmc\spigot\1.17.1-R0.1-SNAPSHOT\spigot-1.17.1-R0.1-SNAPSHOT.jar" />-->
+        <!--    </classpath>-->
+
+        <!--    &lt;!&ndash;<keep-names>-->
+        <!--        <class template="class *" />-->
+        <!--        <method template="@org.bukkit.event.EventHandler *(**)" />-->
+        <!--        <class template="class de.jeff_media.drop2inventory.Drop2InventoryAPI">-->
+        <!--            <method template="public *(**)" />-->
+        <!--        </class>-->
+        <!--    </keep-names>&ndash;&gt;-->
+        <!--    <keep-names>-->
+        <!--        <method template="public static getHandlerList(**)" />-->
+        <!--        <method access="protected+"/>-->
+        <!--        &lt;!&ndash;<method template="@org.bukkit.event.EventHandler *(**)" />&ndash;&gt;-->
+
+        <!--    </keep-names>-->
+
+        <!--    <property name="log-file" value="log.xml"/>-->
+
+        <!--    <property name="packages-naming" value="keep"/>-->
+
+        <!--    <property name="extensive-flow-obfuscation" value="maximum"/>-->
+        <!--    <property name="generics" value="keep"/>-->
+        <!--    <property name="line-numbers" value="keep"/>-->
+        <!--    <property name="inner-classes" value="remove"/>-->
+        <!--    <property name="synthetize-methods" value="disable"/>-->
+        <!--    <property name="synthetize-fields" value="disable"/>-->
+        <!--    <property name="remove-toString" value="enable"/>-->
+        <!--    <property name="string-encryption" value="enable"/>-->
+        <!--    <property name="string-encryption-type" value="strong"/>-->
+        <!--    <property name="string-encryption-ignored-strings" value="../allatori/spigotmc-patterns.txt"/>-->
+        <!--    <ignore-classes>-->
+        <!--        <class template="class **.acf.**" />-->
+        <!--    </ignore-classes>-->
+        <!--</config>-->
+
+
+        <!--<config>-->
+<!--    <input>-->
+<!--        <jar in="${project.artifactId}.jar" out="${project.artifactId}.jar"/>-->
+<!--    </input>-->
+
+<!--    &lt;!&ndash;<keep-names>-->
+<!--        <class template="class *" />-->
+<!--        <method template="@org.bukkit.event.EventHandler *(**)" />-->
+<!--        <class template="class de.jeff_media.drop2inventory.Drop2InventoryAPI">-->
+<!--            <method template="public *(**)" />-->
+<!--        </class>-->
+<!--    </keep-names>&ndash;&gt;-->
+<!--    <keep-names>-->
+<!--        <class access="private+"/>-->
+<!--        <method template="public static getHandlerList(**)" />-->
+<!--        <method template="public static getInstance(**)" />-->
+<!--        &lt;!&ndash;<method template="@org.bukkit.event.EventHandler *(**)" />&ndash;&gt;-->
+
+<!--    </keep-names>-->
+
+<!--    <property name="log-file" value="log.xml"/>-->
+
+<!--    <property name="packages-naming" value="keep"/>-->
+
+<!--    <property name="extensive-flow-obfuscation" value="maximum"/>-->
+<!--    <property name="generics" value="keep"/>-->
+<!--    <property name="line-numbers" value="keep"/> &lt;!&ndash; For Debugging: keep &ndash;&gt;-->
+<!--    <property name="inner-classes" value="remove"/>-->
+<!--    <property name="synthetize-methods" value="disable"/>-->
+<!--    <property name="synthetize-fields" value="disable"/>-->
+<!--    <property name="remove-toString" value="enable"/>-->
+<!--    <property name="string-encryption" value="enable"/>-->
+<!--    <property name="string-encryption-type" value="strong"/>-->
+<!--    <property name="string-encryption-ignored-strings" value="../allatori/spigotmc-patterns.txt"/>-->
+<!--    <ignore-classes>-->
+<!--        &lt;!&ndash;<class template="class **.libs.co.aikar.**" />-->
+<!--        <class template="class **.daddy.**" />&ndash;&gt;-->
+<!--        <class template="class **.libs.**" />-->
+<!--        <class template="class **.acf.**" />-->
+<!--        <class template="class **.updatechecker.**" />-->
+<!--    </ignore-classes>-->
+<!--</config>-->

@@ -1,0 +1,6 @@
+name: Daytime
+main: com.jeff_media.daytime.Daytime
+version: ${project.version}
+authors: [JEFF Media GbR, mfnalex]
+description: Changes the day/night length per world
+api-version: "1.13"
