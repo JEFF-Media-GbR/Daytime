@@ -1,6 +1,6 @@
 package com.jeff_media.daytime;
 
-import de.jeff_media.jefflib.WorldUtils;
+import com.jeff_media.jefflib.WorldUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
 import org.bukkit.World;
