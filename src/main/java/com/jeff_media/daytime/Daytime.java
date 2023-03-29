@@ -4,12 +4,10 @@ import co.aikar.commands.PaperCommandManager;
 import com.jeff_media.daytime.commands.MainCommand;
 import com.jeff_media.jefflib.ConfigUtils;
 import com.jeff_media.jefflib.JeffLib;
-import com.jeff_media.updatechecker.UpdateCheckSource;
 import com.jeff_media.updatechecker.UpdateChecker;
 import com.jeff_media.updatechecker.UserAgentBuilder;
-import de.jeff_media.daddy.Stepsister;
+import de.jeff_media.daddy.Daddy_Stepsister;
 import lombok.Getter;
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -26,8 +24,10 @@ public final class Daytime extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        Stepsister.init(this);
-        Stepsister.createVerificationFile();
+        Daddy_Stepsister.init(this);
+        if(Daddy_Stepsister.allows(null)) {
+            Daddy_Stepsister.createVerificationFile();
+        }
         JeffLib.enableNMS();
         PaperCommandManager acf = new PaperCommandManager(this);
         acf.registerCommand(new MainCommand());
