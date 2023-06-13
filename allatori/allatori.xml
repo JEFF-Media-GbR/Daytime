@@ -1,7 +1,7 @@
 <config>
 
     <input>
-        <jar in="${project.artifactId}-${project.version}.jar" out="${project.artifactId}-${project.version}.jar"/>
+        <jar in="${project.artifactId}-${project.version}.jar" out="${project.artifactId}-${project.version}-obf.jar"/>
     </input>
 
     <classpath basedir="C:\Users\mfnal\.m2\repository">
@@ -12,6 +12,8 @@
         <method template="@java.lang.Override *(**)" />
         <method template="public static getHandlerList(**)" />
         <class template="class * extends org.bukkit.plugin.java.JavaPlugin" />
+        <class template="class **.ReflUtils**" />
+        <class template="class **MethodParameters" />
     </keep-names>
 
     <!-- Main package -->
@@ -26,7 +28,7 @@
 
     <property name="generics" value="remove"/>
     <property name="line-numbers" value="obfuscate"/>
-    <property name="inner-classes" value="remove"/>
+    <property name="inner-classes" value="keep"/>
     <property name="synthetize-methods" value="disable"/>
     <property name="synthetize-fields" value="disable"/>
     <property name="local-variables-naming" value="optimize"/>
