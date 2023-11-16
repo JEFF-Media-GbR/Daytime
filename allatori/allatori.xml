@@ -1,7 +1,7 @@
 <config>
 
     <input>
-        <jar in="${project.artifactId}-${project.version}.jar" out="${project.artifactId}-${project.version}-obf.jar"/>
+        <jar in="${project.artifactId}-${project.version}.jar" out="${project.artifactId}-${project.version}.jar"/>
     </input>
 
     <classpath basedir="C:\Users\mfnal\.m2\repository">
@@ -13,7 +13,7 @@
         <method template="public static getHandlerList(**)" />
         <class template="class * extends org.bukkit.plugin.java.JavaPlugin" />
         <class template="class **.ReflUtils**" />
-        <class template="class **MethodParameters" />
+        <class template="**Parameters" />
     </keep-names>
 
     <!-- Main package -->
